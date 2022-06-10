@@ -12,7 +12,7 @@ public class DashboardChannel {
     /**
      * Список кампаний в канале
      */
-    private List<DashboardCampaign> companyList;
+    private List<DashboardCampaign> campaignList;
 
     /**
      * Имя канала
