@@ -12,7 +12,7 @@ public class DashboardCampaign {
     /**
      * Список постов (объявлений) в кампании
      */
-    private List<DashboardOffer> postList;
+    private List<DashboardOffer> offerList;
 
     /**
      * Имя кампании

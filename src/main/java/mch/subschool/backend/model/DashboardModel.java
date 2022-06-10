@@ -2,7 +2,6 @@ package mch.subschool.backend.model;
 
 import lombok.Data;
 
-import javax.persistence.Id;
 import java.util.List;
 
 /**
@@ -10,7 +9,9 @@ import java.util.List;
  */
 @Data
 public class DashboardModel {
-    @Id
+    /**
+     * Id для выбранной БД
+     */
     private String id;
 
     /**

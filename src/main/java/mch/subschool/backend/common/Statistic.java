@@ -1,8 +1,11 @@
 package mch.subschool.backend.common;
 
+import lombok.Data;
+
 /**
  * Статистика
  */
+@Data
 public class Statistic {
     /**
      * Охват - Количество просмотров
