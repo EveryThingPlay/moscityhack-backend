@@ -7,11 +7,9 @@ import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring", uses = {DashboardChannelMapper.class})
 public interface DashboardMapper {
-    @Mapping(target = "id", source = "id")
     @Mapping(target = "channelDtoList", source = "channelList")
     DashboardDto toDto(DashboardModel dashboardModel);
 
-    @Mapping(target = "id", source = "id")
     @Mapping(target = "channelList", source = "channelDtoList")
     DashboardModel fromDto(DashboardDto dashboardDto);
 }
