@@ -1,11 +1,12 @@
-package mch.subschool.backend.model.profile.publisher;
+package mch.subschool.backend.common.profile;
 
+import lombok.Data;
 import mch.subschool.backend.common.Requisite;
-import mch.subschool.backend.common.profile.ProfileCommonInfo;
 
 import java.util.List;
 
-public class PublisherProfileInfo extends ProfileCommonInfo {
+@Data
+public class ProfileAdditiveInfo {
     private String firstName;
     private String lastName;
     private String middleName;

@@ -1,7 +1,8 @@
-package mch.subschool.backend.repository;
+package mch.subschool.backend.repository.mongo;
 
 import lombok.RequiredArgsConstructor;
 import mch.subschool.backend.model.DashboardModel;
+import mch.subschool.backend.repository.DashboardRepository;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
@@ -16,7 +17,7 @@ public class MongoDashboardRepository implements DashboardRepository {
 
     @Override
     public Optional<DashboardModel> get(String id) {
-        DashboardModel model = mongo.findById(id, DashboardModel.class);
+        DashboardModel model = mongo.findById(id, DashboardModel.class, COLLECTION_NAME);
 
         return model == null ? Optional.empty() : Optional.of(model);
     }
