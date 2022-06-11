@@ -3,7 +3,6 @@ package mch.subschool.backend.model;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvNumber;
-import lombok.Data;
 import org.springframework.lang.Nullable;
 
 import java.util.Date;
@@ -20,14 +19,15 @@ public class RawClientData {
     @CsvBindByName()
     private String gender; //Ж or М
     @CsvBindByName()
+    @CsvNumber("#0")
     private int birth_date;
     @CsvBindByName()
-    @CsvDate("dd.MM.yyyy")
-    private Date create_date;
+    @CsvDate("yyyy-MM-dd")
+    private Date create_date;//2020-01-29
     @CsvBindByName()
     private String nonresident_flag; //R or N
     @CsvBindByName()
-    private int businessman_flag; //0 or 1?
+    private boolean businessman_flag; //0 or 1?
     @CsvBindByName()
     private String city;
     @Nullable
@@ -35,7 +35,7 @@ public class RawClientData {
     private String term;//всё пустое
     @CsvBindByName()
     @CsvNumber("#0.0")
-    private int contract_sum;//пример - 25005.0
+    private long contract_sum;//пример - 25005.0
     @CsvBindByName()
     private String product_category_name;
     @CsvBindByName()
@@ -51,22 +51,22 @@ public class RawClientData {
     private int fact_close_date; //2021.0
     @CsvBindByName()
     @CsvNumber("#0.0")
-    private int purchase_sum;
+    private long purchase_sum;
     @CsvBindByName()
     @CsvNumber("#0")
     private int purchase_count;
     @CsvBindByName()
     @CsvNumber("#0.0")
-    private double current_balance_avg_sum;
+    private long current_balance_avg_sum;
     @CsvBindByName()
     @CsvNumber("#0.0")
-    private double current_balance_sum;
+    private long current_balance_sum;
     @CsvBindByName()
     @CsvNumber("#0.0")
-    private double current_debit_turn_sum;
+    private long current_debit_turn_sum;
     @CsvBindByName()
     @CsvNumber("#0.0")
-    private double current_credit_turn_sum;
+    private long current_credit_turn_sum;
     @CsvBindByName()
     private String card_type;//dc or cc
 
@@ -89,6 +89,15 @@ public class RawClientData {
         this.gender = gender;
     }
 
+
+    public String getNonresident_flag() {
+        return nonresident_flag;
+    }
+
+    public void setNonresident_flag(String nonresident_flag) {
+        this.nonresident_flag = nonresident_flag;
+    }
+
     public int getBirth_date() {
         return birth_date;
     }
@@ -105,19 +114,11 @@ public class RawClientData {
         this.create_date = create_date;
     }
 
-    public String getNonresident_flag() {
-        return nonresident_flag;
-    }
-
-    public void setNonresident_flag(String nonresident_flag) {
-        this.nonresident_flag = nonresident_flag;
-    }
-
-    public int getBusinessman_flag() {
+    public boolean getBusinessman_flag() {
         return businessman_flag;
     }
 
-    public void setBusinessman_flag(int businessman_flag) {
+    public void setBusinessman_flag(boolean businessman_flag) {
         this.businessman_flag = businessman_flag;
     }
 
@@ -136,6 +137,14 @@ public class RawClientData {
 
     public void setTerm(@Nullable String term) {
         this.term = term;
+    }
+
+    public long getContract_sum() {
+        return contract_sum;
+    }
+
+    public void setContract_sum(long contract_sum) {
+        this.contract_sum = contract_sum;
     }
 
     public String getProduct_category_name() {
@@ -179,11 +188,11 @@ public class RawClientData {
         this.fact_close_date = fact_close_date;
     }
 
-    public int getPurchase_sum() {
+    public long getPurchase_sum() {
         return purchase_sum;
     }
 
-    public void setPurchase_sum(int purchase_sum) {
+    public void setPurchase_sum(long purchase_sum) {
         this.purchase_sum = purchase_sum;
     }
 
@@ -195,35 +204,35 @@ public class RawClientData {
         this.purchase_count = purchase_count;
     }
 
-    public double getCurrent_balance_avg_sum() {
+    public long getCurrent_balance_avg_sum() {
         return current_balance_avg_sum;
     }
 
-    public void setCurrent_balance_avg_sum(double current_balance_avg_sum) {
+    public void setCurrent_balance_avg_sum(long current_balance_avg_sum) {
         this.current_balance_avg_sum = current_balance_avg_sum;
     }
 
-    public double getCurrent_balance_sum() {
+    public long getCurrent_balance_sum() {
         return current_balance_sum;
     }
 
-    public void setCurrent_balance_sum(double current_balance_sum) {
+    public void setCurrent_balance_sum(long current_balance_sum) {
         this.current_balance_sum = current_balance_sum;
     }
 
-    public double getCurrent_debit_turn_sum() {
+    public long getCurrent_debit_turn_sum() {
         return current_debit_turn_sum;
     }
 
-    public void setCurrent_debit_turn_sum(double current_debit_turn_sum) {
+    public void setCurrent_debit_turn_sum(long current_debit_turn_sum) {
         this.current_debit_turn_sum = current_debit_turn_sum;
     }
 
-    public double getCurrent_credit_turn_sum() {
+    public long getCurrent_credit_turn_sum() {
         return current_credit_turn_sum;
     }
 
-    public void setCurrent_credit_turn_sum(double current_credit_turn_sum) {
+    public void setCurrent_credit_turn_sum(long current_credit_turn_sum) {
         this.current_credit_turn_sum = current_credit_turn_sum;
     }
 
@@ -233,13 +242,5 @@ public class RawClientData {
 
     public void setCard_type(String card_type) {
         this.card_type = card_type;
-    }
-
-    public int getContract_sum() {
-        return contract_sum;
-    }
-
-    public void setContract_sum(int contract_sum) {
-        this.contract_sum = contract_sum;
     }
 }
