@@ -1,8 +1,10 @@
 package mch.subschool.backend.service;
 
 import mch.subschool.backend.common.ProtectedWebResource;
-import mch.subschool.backend.common.profile.Profile;
+
+import java.util.function.Function;
 
 public interface TokenService {
     boolean isTokenAdmittedForResource(String token, ProtectedWebResource resource);
+    <T,R> R getResultIfTokenValid(String token, ProtectedWebResource resource, Function<T, R> function, T input) throws IllegalAccessException;
 }
