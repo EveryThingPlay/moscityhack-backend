@@ -17,7 +17,9 @@ public class CsvParserService {
         CSVReader reader = new CSVReader(
                 new FileReader(fileName));
         List<RawClientData> rawClientData = new CsvToBeanBuilder<RawClientData>(reader)
+                .withType(RawClientData.class)
                 .withSeparator(',')
+                .withIgnoreLeadingWhiteSpace(true)
                 .withThrowExceptions(true)
                 .build().parse();
 
