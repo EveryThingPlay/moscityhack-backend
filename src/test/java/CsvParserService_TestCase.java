@@ -1,14 +1,14 @@
 import mch.subschool.backend.config.CsvParserConfig;
 import mch.subschool.backend.model.RawClientData;
-import mch.subschool.backend.service.CsvParserService;
+import mch.subschool.backend.service.csv.CsvParserService;
 
-import mch.subschool.backend.service.impl.CsvParserServiceImpl;
+import mch.subschool.backend.service.csv.CsvReaderConvertingService;
+import mch.subschool.backend.service.csv.impl.CsvParserServiceImpl;
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.io.FileNotFoundException;
 import java.util.List;
@@ -24,7 +24,8 @@ public class CsvParserService_TestCase {
 
     @Test
     public void csvParserService_test() {
-        csvParserService = new CsvParserServiceImpl();
+        CsvReaderConvertingService convertingService = Mockito.mock(CsvReaderConvertingService.class);
+        csvParserService = new CsvParserServiceImpl(convertingService);
         List<RawClientData> rawClientData;
         try {
             rawClientData = csvParserService.parseRawClientData("src/test/resources/ClientTransactionData.csv");
