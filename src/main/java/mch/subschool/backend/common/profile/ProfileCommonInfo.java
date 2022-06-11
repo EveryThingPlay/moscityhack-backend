@@ -5,8 +5,8 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class ProfileInfo {
+public class ProfileCommonInfo {
     private String login;
     private String email;
-    private String passHash;
+    private String password;
 }

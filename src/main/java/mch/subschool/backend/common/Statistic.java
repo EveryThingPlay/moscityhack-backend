@@ -33,14 +33,24 @@ public class Statistic {
     private Double cac;
 
     /**
-     * ARPU - вводится отдельно
+     * Сумма контрактов - Вводится
      */
-    private Double apru;
+    private Long contractsAmount;
 
     /**
-     * LTV - вводится отдельно
+     * Средний контракт = “Сумма контрактов”/продажи
      */
-    private Double ltv;
+    private Boolean contractsAverage;
+
+    /**
+     * Сумма средних актуальных балансов - Вводится
+     */
+    private Boolean averageCurrentBalancesSum;
+
+    /**
+     * Средний баланс = “Сумма средних актуальных балансов”/продажи
+     */
+    private Boolean averageBalance;
 
     /**
      * ROI - (LTV - CAC)/CAC
