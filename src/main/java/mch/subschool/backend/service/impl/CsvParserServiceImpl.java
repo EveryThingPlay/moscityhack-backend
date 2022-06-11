@@ -19,6 +19,14 @@ public class CsvParserServiceImpl implements CsvParserService {
     public List<RawClientData> parseRawClientData(String fileName) throws FileNotFoundException {
         CSVReader reader = new CSVReader(
                 new FileReader(fileName));
+        List<RawClientData> rawClientData = parseRawClientDataWithReader(reader);
+
+        return rawClientData;
+    }
+
+
+    public List<RawClientData> parseRawClientDataWithReader(CSVReader reader)
+    {
         List<RawClientData> rawClientData = new CsvToBeanBuilder<RawClientData>(reader)
                 //.withMultilineLimit(1)
                 .withType(RawClientData.class)
@@ -29,5 +37,4 @@ public class CsvParserServiceImpl implements CsvParserService {
 
         return rawClientData;
     }
-
 }
