@@ -3,13 +3,11 @@ package mch.subschool.backend.controller;
 import lombok.RequiredArgsConstructor;
 import mch.subschool.backend.common.ProtectedWebResource;
 import mch.subschool.backend.common.profile.ProfileType;
+import mch.subschool.backend.dto.AdOfferDto;
 import mch.subschool.backend.dto.DashboardChannelDto;
 import mch.subschool.backend.dto.DashboardDto;
 import mch.subschool.backend.model.DashboardModel;
-import mch.subschool.backend.service.DashboardService;
-import mch.subschool.backend.service.MapperService;
-import mch.subschool.backend.service.ProfileService;
-import mch.subschool.backend.service.TokenService;
+import mch.subschool.backend.service.*;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -27,6 +25,8 @@ public class ManagerController implements ProtectedWebResource {
     private final TokenService tokenService;
     private final ProfileService profileService;
 
+    private final OfferService adOfferService;
+
     @GetMapping(value = "/",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
@@ -36,6 +36,17 @@ public class ManagerController implements ProtectedWebResource {
                 this,
                 mapper::toDto,
                 profileService.getProfileByToken(token).getDashboardModel());
+    }
+
+    @GetMapping(value = "/getAdOffers",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public AdOfferDto getAdOffers(@RequestHeader("Authorization") String token) throws IllegalAccessException {
+        return tokenService.getResultIfTokenValid(
+                token,
+                this,
+                adOfferService.getAllOffers(),
+                null);
     }
 
     public List<DashboardChannelDto> getChannelList(@RequestHeader("Authorization") String token) throws IllegalAccessException {
