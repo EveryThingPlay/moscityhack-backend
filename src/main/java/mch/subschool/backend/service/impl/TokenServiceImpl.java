@@ -7,6 +7,7 @@ import mch.subschool.backend.service.ProfileService;
 import mch.subschool.backend.service.TokenService;
 
 import java.util.Base64;
+import java.util.function.Function;
 
 @RequiredArgsConstructor
 public class TokenServiceImpl implements TokenService {
@@ -17,5 +18,15 @@ public class TokenServiceImpl implements TokenService {
         Profile profile = profileService.getProfileByToken(token);
 
         return resource.getAdmittedProfileTypeList().contains(profile.getProfileType());
+    }
+
+    @Override
+    public <T, R> R getResultIfTokenValid(String token, ProtectedWebResource resource,  Function<T, R> function, T input)
+            throws IllegalAccessException {
+        if (isTokenAdmittedForResource(token, resource)) {
+            return function.apply(input);
+        }
+
+        throw new IllegalAccessException("Access fail!");
     }
 }
