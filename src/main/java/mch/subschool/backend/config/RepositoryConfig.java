@@ -1,7 +1,9 @@
 package mch.subschool.backend.config;
 
+import mch.subschool.backend.repository.AdOfferRepository;
 import mch.subschool.backend.repository.DashboardRepository;
 import mch.subschool.backend.repository.ProfileRepository;
+import mch.subschool.backend.repository.mongo.MongoAdOfferRepository;
 import mch.subschool.backend.repository.mongo.MongoDashboardRepository;
 import mch.subschool.backend.repository.mongo.MongoProfileRepository;
 import org.springframework.context.annotation.Bean;
@@ -18,5 +20,10 @@ public class RepositoryConfig {
     @Bean
     ProfileRepository mongoProfileRepository(MongoTemplate mongoTemplate) {
         return new MongoProfileRepository(mongoTemplate);
+    }
+
+    @Bean
+    AdOfferRepository adOfferRepository(MongoTemplate mongoTemplate) {
+        return new MongoAdOfferRepository(mongoTemplate);
     }
 }

@@ -2,9 +2,6 @@ package mch.subschool.backend.repository.mongo;
 
 import lombok.RequiredArgsConstructor;
 import mch.subschool.backend.common.profile.Profile;
-import mch.subschool.backend.common.profile.ProfileType;
-import mch.subschool.backend.model.profile.manager.ManagerProfile;
-import mch.subschool.backend.model.profile.publisher.PublisherProfile;
 import mch.subschool.backend.repository.ProfileRepository;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
