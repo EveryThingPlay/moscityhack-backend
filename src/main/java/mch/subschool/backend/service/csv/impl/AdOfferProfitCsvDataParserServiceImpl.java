@@ -4,6 +4,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBeanBuilder;
 import lombok.RequiredArgsConstructor;
 
+import mch.subschool.backend.common.csv.CsvType;
 import mch.subschool.backend.model.csv.AdOfferProfitCsvData;
 import mch.subschool.backend.service.csv.CsvParserService;
 import mch.subschool.backend.service.csv.CsvReaderConvertingService;
@@ -36,5 +37,10 @@ public class AdOfferProfitCsvDataParserServiceImpl implements CsvParserService<A
                 .withThrowExceptions(true)
                 .build()
                 .parse();
+    }
+
+    @Override
+    public CsvType getCsvType() {
+        return CsvType.AD_OFFER_PROFIT;
     }
 }

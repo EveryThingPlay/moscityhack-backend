@@ -3,6 +3,7 @@ package mch.subschool.backend.service.csv.impl;
 import com.opencsv.CSVReader;
 import com.opencsv.bean.CsvToBeanBuilder;
 import lombok.RequiredArgsConstructor;
+import mch.subschool.backend.common.csv.CsvType;
 import mch.subschool.backend.model.csv.AdOfferCostCsvData;
 import mch.subschool.backend.service.csv.CsvParserService;
 import mch.subschool.backend.service.csv.CsvReaderConvertingService;
@@ -36,6 +37,11 @@ public class AdOfferCostCsvDataParserServiceImpl implements CsvParserService<AdO
                 .withIgnoreLeadingWhiteSpace(true)
                 //.withThrowExceptions(true)
                 .build().parse();
+    }
+
+    @Override
+    public CsvType getCsvType() {
+        return CsvType.AD_OFFER_COST;
     }
 }
 
