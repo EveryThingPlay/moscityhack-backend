@@ -7,8 +7,5 @@ import java.util.List;
 
 @Data
 public class ProfileAdditiveInfo {
-    private String firstName;
-    private String lastName;
-    private String middleName;
     private List<Requisite> requisiteList;
 }
