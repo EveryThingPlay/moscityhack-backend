@@ -1,10 +1,14 @@
 import com.opencsv.CSVReader;
 import mch.subschool.backend.config.CsvParserConfig;
 import mch.subschool.backend.model.RawClientData;
+import mch.subschool.backend.model.csv.AdOfferCostCsvData;
+import mch.subschool.backend.model.csv.AdOfferProfitCsvData;
 import mch.subschool.backend.model.csv.CpcAndCac;
 import mch.subschool.backend.service.csv.CsvParserService;
 
 import mch.subschool.backend.service.csv.CsvReaderConvertingService;
+import mch.subschool.backend.service.csv.impl.AdOfferCostCsvDataParserServiceImpl;
+import mch.subschool.backend.service.csv.impl.AdOfferProfitCsvDataParserServiceImpl;
 import mch.subschool.backend.service.csv.impl.CsvCpcAndCacParserServiceImpl;
 import mch.subschool.backend.service.csv.impl.CsvRawClientDataParserServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -69,6 +73,58 @@ public class CsvParserService_TestCase {
         for (int i = 0; i < 5; i++) {
             System.out.print(cpcAndCacCollection.get(i).getCPC()+ " ");
             System.out.println(cpcAndCacCollection.get(i).getCPC());
+        }
+    }
+
+    @Test
+    public void  csvParseAdOfferCost_test(){
+//        try {
+//            System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out), true, "UTF-8"));
+//        } catch (UnsupportedEncodingException e) {
+//            throw new InternalError("VM does not support mandatory encoding UTF-8");
+//        }
+
+        CsvReaderConvertingService convertingService = Mockito.mock(CsvReaderConvertingService.class);
+        AdOfferCostCsvDataParserServiceImpl csvParserService= new AdOfferCostCsvDataParserServiceImpl(convertingService);
+        List<AdOfferCostCsvData> adOfferCostCsvData;
+        try {
+            CSVReader reader = new CSVReader(
+                    new FileReader("src/test/resources/Строение_данных_Пример_загрузки_подготовленной_инфы_из_канала.csv"));
+            adOfferCostCsvData = csvParserService.parseCsvByReader(reader);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("---------");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(adOfferCostCsvData.get(i).getChannel()+ " ");
+            System.out.println(adOfferCostCsvData.get(i).getInteraction());
+        }
+    }
+
+    @Test
+    public void  csvParseAdOfferProfit_test(){
+//        try {
+//            System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out), true, "UTF-8"));
+//        } catch (UnsupportedEncodingException e) {
+//            throw new InternalError("VM does not support mandatory encoding UTF-8");
+//        }
+
+        CsvReaderConvertingService convertingService = Mockito.mock(CsvReaderConvertingService.class);
+        CsvParserService<AdOfferProfitCsvData> csvParserService= new AdOfferProfitCsvDataParserServiceImpl(convertingService);
+        List<AdOfferProfitCsvData> adOfferProfitCsvData;
+        try {
+            CSVReader reader = new CSVReader(
+                    new FileReader("src/test/resources/" +
+                            "Строение_данных_Пример_загрузки_подготовленной_инфы_по_продажам.csv"));
+            adOfferProfitCsvData = csvParserService.parseCsvByReader(reader);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("---------");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(adOfferProfitCsvData.get(i).getChannel()+ " ");
+            System.out.print(adOfferProfitCsvData.get(i).getAdOffer()+ " ");
+            System.out.println(adOfferProfitCsvData.get(i).getAverageActualBalanceSum());
         }
     }
 }
