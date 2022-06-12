@@ -3,21 +3,20 @@ package mch.subschool.backend.model;
 import lombok.Data;
 import mch.subschool.backend.common.ProductCategoryName;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.MongoId;
 
 @Data
 public class AdOffer {
     @Id
-    String id;
-    String maintainerId;
-    String name;
-    String description;
-    String base64png;
-    ProductCategoryName productCategoryName;
-    String cardTypeName;
-    Boolean isConversionDelegateNeeded;
-    Boolean isBusinessmanDelegateNeeded;
-    Boolean isNonResidentDelegateNeeded;
-    Long cpa;//сколько заплатить в итоге контрагенту?
-    Float payPercent;
+    private String id;
+    private String maintainerId;
+    private String name;
+    private String description;
+    private String base64png;
+    private ProductCategoryName productCategoryName;
+    private String cardTypeName;
+    private Boolean isConversionDelegateNeeded;
+    private Boolean isBusinessmanDelegateNeeded;
+    private Boolean isNonResidentDelegateNeeded;
+    private Long cpa;//сколько заплатить в итоге контрагенту?
+    private Float payPercent;
 }
