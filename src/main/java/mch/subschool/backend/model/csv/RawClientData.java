@@ -1,4 +1,4 @@
-package mch.subschool.backend.model;
+package mch.subschool.backend.model.csv;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
