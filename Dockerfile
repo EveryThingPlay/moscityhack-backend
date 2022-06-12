@@ -7,5 +7,7 @@ RUN yes|apt install maven
 RUN yes|apt-get install systemd
 RUN yes|apt-get install mongodb
 RUN mkdir -p /data/db
-	
-CMD mongod --fork --syslog && mvn spring-boot:run
+RUN mongod --fork -syslog
+
+EXPOSE 8080
+CMD mvn spring-boot:run
