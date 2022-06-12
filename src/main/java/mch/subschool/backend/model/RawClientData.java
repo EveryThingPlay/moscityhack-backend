@@ -3,6 +3,7 @@ package mch.subschool.backend.model;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvNumber;
+import mch.subschool.backend.model.csv.CsvData;
 import org.springframework.lang.Nullable;
 
 import java.util.Date;
@@ -12,7 +13,7 @@ import java.util.Date;
  */
 
 
-public class RawClientData {
+public class RawClientData implements CsvData {
 
     @CsvBindByName()
     private String client_id;

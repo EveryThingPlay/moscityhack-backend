@@ -1,7 +1,7 @@
 import com.opencsv.CSVReader;
 import mch.subschool.backend.config.CsvParserConfig;
+import mch.subschool.backend.model.RawClientData;
 import mch.subschool.backend.model.csv.CpcAndCac;
-import mch.subschool.backend.model.csv.RawClientData;
 import mch.subschool.backend.service.csv.CsvParserService;
 
 import mch.subschool.backend.service.csv.CsvReaderConvertingService;

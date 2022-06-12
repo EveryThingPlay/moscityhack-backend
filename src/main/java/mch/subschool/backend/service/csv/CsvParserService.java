@@ -4,7 +4,6 @@ import com.opencsv.CSVReader;
 import com.opencsv.ICSVParser;
 import mch.subschool.backend.model.csv.CpcAndCac;
 import mch.subschool.backend.model.csv.CsvData;
-import mch.subschool.backend.model.csv.RawClientData;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.FileNotFoundException;
