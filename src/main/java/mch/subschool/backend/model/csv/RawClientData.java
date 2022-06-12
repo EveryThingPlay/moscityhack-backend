@@ -1,4 +1,4 @@
-package mch.subschool.backend.model.csv;
+package mch.subschool.backend.model;
 
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
@@ -12,7 +12,7 @@ import java.util.Date;
  */
 
 
-public class RawClientData implements CsvData {
+public class RawClientData {
 
     @CsvBindByName()
     private String client_id;

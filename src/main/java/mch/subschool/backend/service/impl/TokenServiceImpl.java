@@ -19,14 +19,4 @@ public class TokenServiceImpl implements TokenService {
 
         return resource.getAdmittedProfileTypeList().contains(profile.getProfileType());
     }
-
-    @Override
-    public <T, R> R getResultIfTokenValid(String token, ProtectedWebResource resource,  Function<T, R> function, T input)
-            throws IllegalAccessException {
-        if (isTokenAdmittedForResource(token, resource)) {
-            return function.apply(input);
-        }
-
-        throw new IllegalAccessException("Access fail!");
-    }
 }

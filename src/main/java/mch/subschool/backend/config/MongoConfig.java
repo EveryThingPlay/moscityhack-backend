@@ -19,18 +19,14 @@ import java.net.UnknownHostException;
 public class MongoConfig {
     @Value("${spring.data.mongodb.database}")
     private String database;
-
-    @Value("${spring.data.mongodb.userName}")
-    private String userName;
-
+    @Value("${spring.data.mongodb.user}")
+    private String user;
     @Value("${spring.data.mongodb.password}")
     private String password;
-
-    @Value("${spring.data.mongodb.port}")
-    private int port;
-
     @Value("${spring.data.mongodb.host}")
     private String host;
+    @Value("${spring.data.mongodb.port}")
+    private String port;
 
     @Bean
     public MongoClient client() {
@@ -43,22 +39,22 @@ public class MongoConfig {
     }
 
     private ConnectionString getConnectionString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("mongodb://");
+        StringBuilder connectionStringBuilder = new StringBuilder();
+        connectionStringBuilder.append("mongodb://");
 
-        if (userName != null && password != null) {
-            sb.append(userName)
+        if (user != null && password != null) {
+            connectionStringBuilder.append(user)
                     .append(":")
                     .append(password)
                     .append("@");
         }
 
-        sb.append(host)
+        connectionStringBuilder.append(host)
                 .append(":")
                 .append(port)
                 .append("/");
 
-        return new ConnectionString(sb.toString());
+        return new ConnectionString(connectionStringBuilder.toString());
     }
 
 }
