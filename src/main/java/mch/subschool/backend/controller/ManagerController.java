@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping("api/v1/manager/")
 @RequiredArgsConstructor
 public class ManagerController implements ProtectedWebResource {
