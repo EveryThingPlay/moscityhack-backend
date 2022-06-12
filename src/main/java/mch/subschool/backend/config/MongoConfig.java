@@ -17,20 +17,11 @@ import java.net.UnknownHostException;
 @Configuration
 @EnableMongoRepositories
 public class MongoConfig {
-    @Value("${spring.data.mongodb.database}")
-    private String database;
-
-    @Value("${spring.data.mongodb.userName}")
-    private String userName;
-
-    @Value("${spring.data.mongodb.password}")
-    private String password;
-
-    @Value("${spring.data.mongodb.port}")
-    private int port;
-
-    @Value("${spring.data.mongodb.host}")
-    private String host;
+    private static final String DATABASE_NAME = System.getenv("DATABASE_NAME");
+    private static final String USER_NAME = System.getenv("USER_NAME");
+    private static final String PASSWORD = System.getenv("PASSWORD");
+    private static final String HOST = System.getenv("HOST");
+    private static final String PORT = System.getenv("PORT");
 
     @Bean
     public MongoClient client() {
@@ -39,26 +30,26 @@ public class MongoConfig {
 
     @Bean
     public MongoTemplate template(MongoClient client) {
-        return new MongoTemplate(client, database);
+        return new MongoTemplate(client, DATABASE_NAME);
     }
 
     private ConnectionString getConnectionString() {
-        StringBuilder sb = new StringBuilder();
-        sb.append("mongodb://");
+        StringBuilder connectionStringBuilder = new StringBuilder();
+        connectionStringBuilder.append("mongodb://");
 
-        if (userName != null && password != null) {
-            sb.append(userName)
+        if (USER_NAME != null && PASSWORD != null) {
+            connectionStringBuilder.append(USER_NAME)
                     .append(":")
-                    .append(password)
+                    .append(PASSWORD)
                     .append("@");
         }
 
-        sb.append(host)
+        connectionStringBuilder.append(HOST)
                 .append(":")
-                .append(port)
+                .append(PORT)
                 .append("/");
 
-        return new ConnectionString(sb.toString());
+        return new ConnectionString(connectionStringBuilder.toString());
     }
 
 }

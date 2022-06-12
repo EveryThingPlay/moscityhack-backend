@@ -3,6 +3,7 @@ package mch.subschool.backend.model;
 import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvDate;
 import com.opencsv.bean.CsvNumber;
+import lombok.Data;
 import org.springframework.lang.Nullable;
 
 import java.util.Date;
@@ -11,7 +12,7 @@ import java.util.Date;
  * Формат данных из представленного заказчиком датапула
  */
 
-
+@Data
 public class RawClientData {
 
     @CsvBindByName()
