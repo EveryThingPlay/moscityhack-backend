@@ -17,11 +17,16 @@ import java.net.UnknownHostException;
 @Configuration
 @EnableMongoRepositories
 public class MongoConfig {
-    private static final String DATABASE_NAME = System.getenv("DATABASE_NAME");
-    private static final String USER_NAME = System.getenv("USER_NAME");
-    private static final String PASSWORD = System.getenv("PASSWORD");
-    private static final String HOST = System.getenv("HOST");
-    private static final String PORT = System.getenv("PORT");
+    @Value("${spring.data.mongodb.database}")
+    private String database;
+    @Value("${spring.data.mongodb.user}")
+    private String user;
+    @Value("${spring.data.mongodb.password}")
+    private String password;
+    @Value("${spring.data.mongodb.host}")
+    private String host;
+    @Value("${spring.data.mongodb.port}")
+    private String port;
 
     @Bean
     public MongoClient client() {
@@ -30,23 +35,23 @@ public class MongoConfig {
 
     @Bean
     public MongoTemplate template(MongoClient client) {
-        return new MongoTemplate(client, DATABASE_NAME);
+        return new MongoTemplate(client, database);
     }
 
     private ConnectionString getConnectionString() {
         StringBuilder connectionStringBuilder = new StringBuilder();
         connectionStringBuilder.append("mongodb://");
 
-        if (USER_NAME != null && PASSWORD != null) {
-            connectionStringBuilder.append(USER_NAME)
+        if (user != null && password != null) {
+            connectionStringBuilder.append(user)
                     .append(":")
-                    .append(PASSWORD)
+                    .append(password)
                     .append("@");
         }
 
-        connectionStringBuilder.append(HOST)
+        connectionStringBuilder.append(host)
                 .append(":")
-                .append(PORT)
+                .append(port)
                 .append("/");
 
         return new ConnectionString(connectionStringBuilder.toString());
