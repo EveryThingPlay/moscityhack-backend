@@ -2,7 +2,9 @@ package mch.subschool.backend.controller;
 
 import lombok.RequiredArgsConstructor;
 import mch.subschool.backend.common.profile.Profile;
+import mch.subschool.backend.common.profile.ProfileType;
 import mch.subschool.backend.dto.LogInDto;
+import mch.subschool.backend.dto.LogInResponseDto;
 import mch.subschool.backend.dto.SignUpDto;
 import mch.subschool.backend.mapper.ProfileMapper;
 import mch.subschool.backend.service.LogInService;
@@ -31,7 +33,13 @@ public class AuthorizationController {
     @PostMapping(value = "/login",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public String logIn(@RequestBody LogInDto logInDto) {
-        return logInService.logIn(logInDto);
+    public LogInResponseDto logIn(@RequestBody LogInDto logInDto) {
+        String token = logInService.logIn(logInDto);
+        ProfileType profileType = profileService.getProfileByToken(token).getProfileType();
+        LogInResponseDto responseDto = new LogInResponseDto();
+        responseDto.setToken(token);
+        responseDto.setProfileType(profileType);
+
+        return responseDto;
     }
 }
