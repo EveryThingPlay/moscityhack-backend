@@ -5,7 +5,7 @@ import com.opencsv.bean.CsvNumber;
 import lombok.Data;
 
 @Data
-public class AdOfferPrfoitCsvData implements CsvData {
+public class AdOfferProfitCsvData implements CsvData {
     @CsvBindByName(column = "Канал", locale = "ru-Ru")
     String channel;
     @CsvBindByName(column = "Компания", locale = "ru-Ru")
