@@ -12,7 +12,7 @@ import java.util.Date;
  */
 
 
-public class RawClientData {
+public class RawClientData implements CsvData {
 
     @CsvBindByName()
     private String client_id;

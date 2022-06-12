@@ -5,9 +5,8 @@ import mch.subschool.backend.model.csv.RawClientData;
 import mch.subschool.backend.service.csv.CsvParserService;
 
 import mch.subschool.backend.service.csv.CsvReaderConvertingService;
-import mch.subschool.backend.service.csv.impl.CsvParserServiceImpl;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
+import mch.subschool.backend.service.csv.impl.CsvCpcAndCacParserServiceImpl;
+import mch.subschool.backend.service.csv.impl.CsvRawClientDataParserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +18,6 @@ import java.util.List;
 @ContextConfiguration(classes = CsvParserConfig.class)
 public class CsvParserService_TestCase {
 
-    @Autowired
-    CsvParserService csvParserService;
-//    @BeforeAll
-//    public void setup() {
-//        CsvReaderConvertingService convertingService = Mockito.mock(CsvReaderConvertingService.class);
-//        csvParserService = new CsvParserServiceImpl(convertingService);
-//    }
 
     @Test
     public void csvRawClientDataParser_test() {
@@ -37,13 +29,13 @@ public class CsvParserService_TestCase {
         }
 
         CsvReaderConvertingService convertingService = Mockito.mock(CsvReaderConvertingService.class);
-        csvParserService = new CsvParserServiceImpl(convertingService);
+        CsvParserService<RawClientData> csvParserService = new CsvRawClientDataParserServiceImpl(convertingService);
 
         List<RawClientData> rawClientData;
         try {
             CSVReader reader = new CSVReader(
                     new FileReader("src/test/resources/ClientTransactionData.csv"));
-            rawClientData = csvParserService.getRawClientDataListFromCsvReader(reader);
+            rawClientData = csvParserService.parseCsvByReader(reader);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -64,12 +56,12 @@ public class CsvParserService_TestCase {
         }
 
         CsvReaderConvertingService convertingService = Mockito.mock(CsvReaderConvertingService.class);
-        csvParserService = new CsvParserServiceImpl(convertingService);
+        CsvCpcAndCacParserServiceImpl csvParserService = new CsvCpcAndCacParserServiceImpl(convertingService);
         List<CpcAndCac> cpcAndCacCollection;
         try {
             CSVReader reader = new CSVReader(
                     new FileReader("src/test/resources/Строение данных  - СРС и САС.csv"));
-            cpcAndCacCollection = csvParserService.getCpcAndCacFromCsvReader(reader);
+            cpcAndCacCollection = csvParserService.parseCsvByReader(reader);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

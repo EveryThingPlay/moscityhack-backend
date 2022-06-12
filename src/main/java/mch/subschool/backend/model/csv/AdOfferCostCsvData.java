@@ -4,8 +4,9 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvNumber;
 import lombok.Data;
 
+
 @Data
-public class CpcAndCac implements CsvData {
+public class AdOfferCostCsvData implements CsvData {
     @CsvBindByName(column = "Канал", locale = "ru-Ru")
     String Channel;
     @CsvBindByName(column = "Дата", locale = "ru-Ru")
@@ -25,5 +26,3 @@ public class CpcAndCac implements CsvData {
     Integer sales;
 
 }
-
-
