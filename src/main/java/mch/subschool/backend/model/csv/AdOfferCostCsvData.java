@@ -1,28 +1,41 @@
 package mch.subschool.backend.model.csv;
 
 import com.opencsv.bean.CsvBindByName;
+import com.opencsv.bean.CsvBindByPosition;
 import com.opencsv.bean.CsvNumber;
 import lombok.Data;
 
 
 @Data
 public class AdOfferCostCsvData implements CsvData {
-    @CsvBindByName(column = "Канал", locale = "ru-Ru")
-    String Channel;
-    @CsvBindByName(column = "Дата", locale = "ru-Ru")
+    @CsvBindByName(column = "Канал")
+    //@CsvBindByPosition(position = 0)
+    String channel;
+    @CsvBindByName(column = "Компания ")
+    //@CsvBindByPosition(position = 1)
     //@CsvDate("yyyy-MM-dd")
-    String date;
-    @CsvBindByName(column = "CPC", locale = "ru-Ru")
-    //@CsvNumber(value = "#0.")
-    @CsvNumber(value = "#0.0", profiles = "variant1")
-    @CsvNumber(value = "#0,0", profiles = "variant2")
-    @CsvNumber(value = "#0", profiles = "variant3")
-    Float CPC;
-    @CsvBindByName(column = "Расходы", locale = "ru-Ru")
-    @CsvNumber(value = "#0")
-    Integer expenses;
-    @CsvBindByName(column = "Продажи", locale = "ru-Ru")
-    @CsvNumber(value = "#0")
-    Integer sales;
+    String company;
+    @CsvBindByName(column = "Предложение")
+    //@CsvBindByPosition(position = 2)
+    //@CsvNumber(value = "#0")
+    String adOffer;
+
+    @CsvBindByName(column = "Охват")
+    //@CsvBindByPosition(position = 3)
+    @CsvNumber("#0")
+    Integer coverage;
+
+    @CsvBindByName(column = "Взаимодействия")
+    //@CsvBindByPosition(position = 4)
+    @CsvNumber("#0")
+    Integer interaction;
+
+    @CsvBindByName(column ="Стоимость взаимодействия")
+    //@CsvBindByPosition(position = 5)
+    @CsvNumber(value = "#0", profiles = "variant4")
+    @CsvNumber(value = "#0.0", profiles = "variant3")
+    @CsvNumber(value = "\"#0,0#\"", profiles = "variant2")
+    @CsvNumber(value = "-", profiles = "variant1")
+    Float interactionCost;
 
 }

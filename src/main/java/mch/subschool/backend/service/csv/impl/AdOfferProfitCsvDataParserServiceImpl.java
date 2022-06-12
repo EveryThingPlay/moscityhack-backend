@@ -33,7 +33,8 @@ public class AdOfferProfitCsvDataParserServiceImpl implements CsvParserService<A
                 .withProfile("variant2")
                 .withProfile("variant3")
                 .withIgnoreLeadingWhiteSpace(true)
-                //.withThrowExceptions(true)
-                .build().parse();
+                .withThrowExceptions(true)
+                .build()
+                .parse();
     }
 }

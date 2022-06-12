@@ -28,9 +28,11 @@ public class AdOfferCostCsvDataParserServiceImpl implements CsvParserService<AdO
                 //.withMultilineLimit(1)
                 .withType(AdOfferCostCsvData.class)
                 .withSeparator(',')
+                //.withSkipLines(1)
                 .withProfile("variant1")
                 .withProfile("variant2")
                 .withProfile("variant3")
+                .withProfile("variant4")
                 .withIgnoreLeadingWhiteSpace(true)
                 //.withThrowExceptions(true)
                 .build().parse();
