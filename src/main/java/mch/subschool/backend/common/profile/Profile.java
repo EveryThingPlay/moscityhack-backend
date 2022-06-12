@@ -4,13 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import mch.subschool.backend.model.DashboardModel;
-import org.springframework.data.mongodb.core.mapping.MongoId;
+import org.springframework.data.annotation.Id;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 public class Profile {
-    @MongoId
+    @Id
     private String id;
     private DashboardModel dashboardModel;
     private ProfileType profileType;

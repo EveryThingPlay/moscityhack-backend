@@ -27,4 +27,6 @@ public class MapperConfig {
     ProfileMapper profileMapper(List<ProfileMapperStrategy> strategyList) {
         return new ProfileMapperImpl(strategyList);
     }
+
+
 }

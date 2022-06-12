@@ -1,6 +1,7 @@
 package mch.subschool.backend.model;
 
 import lombok.Data;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.MongoId;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class DashboardModel {
     /**
      * Id для выбранной БД
      */
-    @MongoId
+    @Id
     private String id;
 
     /**
