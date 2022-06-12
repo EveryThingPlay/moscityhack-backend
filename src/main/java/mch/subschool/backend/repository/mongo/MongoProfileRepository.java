@@ -37,7 +37,7 @@ public class MongoProfileRepository implements ProfileRepository {
                 .where("profileCommonInfo.login").is(login)
                 .and("profileCommonInfo.password").is(password);
         Query query = new Query(criteria);
-        Profile profile = mongo.findOne(query, Profile.class);
+        Profile profile = mongo.findOne(query, Profile.class, COLLECTION_NAME);
 
         return profile == null ? Optional.empty() : Optional.of(profile);
     }
