@@ -8,7 +8,7 @@ import mch.subschool.backend.common.profile.ProfileType;
 import mch.subschool.backend.dto.AdOfferDto;
 import mch.subschool.backend.error.NoAccessForResourceException;
 import mch.subschool.backend.mapper.AdOfferMapper;
-import mch.subschool.backend.model.AdOffer;
+import mch.subschool.backend.model.adoffer.AdOffer;
 import mch.subschool.backend.model.csv.CpcAndCac;
 import mch.subschool.backend.service.*;
 import mch.subschool.backend.service.csv.CsvParserService;

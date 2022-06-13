@@ -1,4 +1,4 @@
-package mch.subschool.backend.model;
+package mch.subschool.backend.model.adoffer;
 
 import lombok.Data;
 import mch.subschool.backend.common.ProductCategoryName;
