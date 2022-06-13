@@ -1,7 +1,7 @@
 package mch.subschool.backend.repository.mongo;
 
 import lombok.RequiredArgsConstructor;
-import mch.subschool.backend.model.AdOffer;
+import mch.subschool.backend.model.adoffer.AdOffer;
 import mch.subschool.backend.repository.AdOfferRepository;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;

@@ -2,7 +2,7 @@ package mch.subschool.backend.service.impl;
 
 import lombok.AllArgsConstructor;
 import mch.subschool.backend.common.profile.Profile;
-import mch.subschool.backend.model.AdOffer;
+import mch.subschool.backend.model.adoffer.AdOffer;
 import mch.subschool.backend.repository.AdOfferRepository;
 import mch.subschool.backend.service.AdOfferService;
 

@@ -1,7 +1,7 @@
 package mch.subschool.backend.mapper;
 
 import mch.subschool.backend.dto.AdOfferDto;
-import mch.subschool.backend.model.AdOffer;
+import mch.subschool.backend.model.adoffer.AdOffer;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
