@@ -7,6 +7,7 @@ import mch.subschool.backend.common.csv.CsvType;
 import mch.subschool.backend.model.csv.AdOfferCostCsvData;
 import mch.subschool.backend.service.csv.CsvParserService;
 import mch.subschool.backend.service.csv.CsvReaderConvertingService;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

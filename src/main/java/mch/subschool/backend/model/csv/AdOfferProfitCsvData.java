@@ -26,7 +26,7 @@ public class AdOfferProfitCsvData implements CsvData {
 //    @CsvNumber(value = "#0", profiles = "variant1")
 //    @CsvNumber(value = "#0.0", profiles = "variant2")
 //    @CsvNumber(value = "#-", profiles = "variant3")
-    int sales;
+    Integer sales;
 
     @CsvBindByName(column = "Сумма контрактов")
     //@CsvBindByPosition(position = 4)

@@ -7,10 +7,7 @@ import mch.subschool.backend.model.csv.CpcAndCac;
 import mch.subschool.backend.service.csv.CsvParserService;
 
 import mch.subschool.backend.service.csv.CsvReaderConvertingService;
-import mch.subschool.backend.service.csv.impl.AdOfferCostCsvDataParserServiceImpl;
-import mch.subschool.backend.service.csv.impl.AdOfferProfitCsvDataParserServiceImpl;
-import mch.subschool.backend.service.csv.impl.CsvCpcAndCacParserServiceImpl;
-import mch.subschool.backend.service.csv.impl.CsvRawClientDataParserServiceImpl;
+import mch.subschool.backend.service.csv.impl.*;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -121,10 +118,12 @@ public class CsvParserService_TestCase {
             throw new RuntimeException(e);
         }
         System.out.println("---------");
+
         for (int i = 0; i < 5; i++) {
             System.out.print(adOfferProfitCsvData.get(i).getChannel()+ " ");
             System.out.print(adOfferProfitCsvData.get(i).getAdOffer()+ " ");
             System.out.println(adOfferProfitCsvData.get(i).getAverageActualBalanceSum());
+
         }
     }
 }

@@ -20,3 +20,5 @@ public class AdOffer {
     private Long cpa;//сколько заплатить в итоге контрагенту?
     private Float payPercent;
 }
+
+
